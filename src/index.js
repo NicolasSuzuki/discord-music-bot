@@ -4,20 +4,11 @@ const {
     token,
 } = require('./config.json');
 const ytdl = require('ytdl-core');
-const YoutubeMusicApi = require('youtube-music-api')
-const api = new YoutubeMusicApi()
+const YoutubeMusicApi = require('youtube-music-api');
+const api = new YoutubeMusicApi();
+const client = new Discord.Client();
+const queue = new Map();
 
-const verifyIsUrl = string => {
-    let url;
-
-    try {
-        url = new URL(string);
-    } catch (_) {
-        return false
-    }
-
-    return url.protocol === "http:" || url.protocol === "https:";
-}
 const verifyType = string => {
     let url;
 
@@ -33,8 +24,6 @@ const verifyType = string => {
     }
     return 'name'
 }
-const client = new Discord.Client();
-const queue = new Map();
 
 client.once('ready', () => {
     console.log('Ready!');
@@ -47,11 +36,8 @@ client.once('disconnect', () => {
 });
 
 client.on('message', async message => {
-    if (!message.author.bot && message.content.startsWith(`${prefix}natyzera`)) return message.channel.send('Sim sim, muito gostosa, mas infelizmente não é um comando');
     if (!message.author.bot && message.content.startsWith(prefix)) {
         const serverQueue = queue.get(message.guild.id);
-
-        const { content } = message;
 
         let command;
         let musicOrPlaylist;
