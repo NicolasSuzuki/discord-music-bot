@@ -1,7 +1,7 @@
 # Discord Music Bot
 Projeto criado para desenvolvimento de um bot para reprodução de musica no discord
 
-##Objetivos
+## Objetivos
 - Entender como funciona um bot
 - Construir funções para reproduzir músicas recebendo:
   - Links do Youtube (Música ou playlist) 
